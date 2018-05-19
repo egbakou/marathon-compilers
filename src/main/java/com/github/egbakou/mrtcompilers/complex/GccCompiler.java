@@ -76,23 +76,23 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
 
 
     @Override
-    public String executeWithoutTiming(String fileName)
+    public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
-        return super.executeWithoutTiming().trim();
+        return super.runWithoutTiming().trim();
     }
 
 
     @Override
-    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
-        return super.executeInTiming(timeUnit, timeOut).trim();
+        return super.runInTiming(timeUnit, timeOut).trim();
     }
 
 
     @Override
-    public String compileAndExecuteWithoutTiming(String fileName)
+    public String compileAndRunWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException {
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
@@ -102,7 +102,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
                     .getString("cc++.compile")
                     .replace("*", fileName)
                     .replace("#", outputFileName(fileName));
-            executeResullt = super.compileAndExecuteWithoutTiming(compileCommand, executeCommand).trim();
+            executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
         } catch (ConfigurationException e) {
             e.printStackTrace();
         }
@@ -112,7 +112,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
 
 
     @Override
-    public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    public String compileAndRunIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
@@ -122,7 +122,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
                     .getString("cc++.compile")
                     .replace("*", fileName)
                     .replace("#", outputFileName(fileName));
-            executeResullt = super.compileAndExecuteIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
+            executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
         } catch (ConfigurationException e) {
             e.printStackTrace();
         }

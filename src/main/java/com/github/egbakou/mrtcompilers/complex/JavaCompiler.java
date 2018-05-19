@@ -68,42 +68,42 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
 
 
     @Override
-    public String executeWithoutTiming(String fileName)
+    public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("java.run") + " " + fileName.split("\\.|/")[0]);
         } catch (ConfigurationException e) {
             e.printStackTrace();
         }
-        return super.executeWithoutTiming().trim();
+        return super.runWithoutTiming().trim();
     }
 
 
     @Override
-    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("java.run") + " " + fileName.split("\\.|/")[0]);
         } catch (ConfigurationException e) {
             e.printStackTrace();
         }
-        return super.executeInTiming(timeUnit, timeOut).trim();
+        return super.runInTiming(timeUnit, timeOut).trim();
     }
 
 
     @Override
-    public String compileAndExecuteWithoutTiming(String fileName)
+    public String compileAndRunWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException {
         this.compileWithoutTiming(fileName);
-        return this.executeWithoutTiming(fileName);
+        return this.runWithoutTiming(fileName);
     }
 
 
     @Override
-    public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    public String compileAndRunIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
         this.compileWithoutTiming(fileName);
-        return this.executeInTiming(fileName, timeUnit, timeOut);
+        return this.runInTiming(fileName, timeUnit, timeOut);
     }
 
 

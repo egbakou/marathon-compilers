@@ -32,37 +32,36 @@ import java.util.concurrent.TimeoutException;
 public class AllTest {
     /*String out = new PythonCompiler()
                 .directory(new File("/home/laurent/Documents"))
-                .executewithoutTiming("p001.py");
+                .runWithoutTiming("p001.py");
+
+        System.out.println(out);/
+    /*String out = new JsCompiler()
+                .directory(new File("/home/laurent/Documents"))
+                .runWithoutTiming("index.js");
 
         System.out.println(out);*/
-    /*String out = new JsCompiler()
-            .directory(new File("/home/laurent/Documents"))
-            .executewithoutTiming("index.js");
-
-    System.out.println(out);*/
     /*String out = new PascalCompiler()
                 .directory(new File("/home/laurent/Documents"))
-                .compileAndExecuteWithoutTiming("euler1.pas");
+                .compileAndRunWithoutTiming("euler1.pas");
 
         System.out.println(out);*/
     /*String out = new JavaCompiler()
                 .directory(new File("/home/laurent/Documents"))
-                .compileAndExecuteWithoutTiming("Main.java");
+                .compileAndRunWithoutTiming("Main.java");
 
         System.out.println(out);*/
-    /*        String out = new GccCompiler()
+    /*String out = new GccCompiler()
                 .directory(new File("/home/laurent/Documents"))
-                .compileAndExecuteWithoutTiming("problem1.c");
+                .compileAndRunWithoutTiming("problem1.c");
 
         System.out.println(out);*/
 
     public static void main(String[] args) throws InterruptedException, IOException, TimeoutException {
         String out = new GccCompiler()
                 .directory(new File("/home/laurent/Documents"))
-                .compileAndExecuteWithoutTiming("problem1.c");
+                .compileAndRunWithoutTiming("problem1.c");
 
         System.out.println(out);
-
 
     }
 }

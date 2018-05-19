@@ -40,7 +40,7 @@ public interface CommonInterpreterActions {
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String executeWithoutTiming(String fileName)
+    String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException;
 
     /**
@@ -58,6 +58,6 @@ public interface CommonInterpreterActions {
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException;
 }

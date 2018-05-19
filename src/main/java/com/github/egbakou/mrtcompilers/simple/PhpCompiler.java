@@ -43,26 +43,26 @@ public class PhpCompiler extends InterpretedLanguage implements CommonInterprete
 
 
     @Override
-    public String executeWithoutTiming(String fileName)
+    public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("php.run") + " " + fileName);
         } catch (ConfigurationException e) {
             e.printStackTrace();
         }
-        return super.executeWithoutTiming().trim();
+        return super.runWithoutTiming().trim();
     }
 
 
     @Override
-    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("php.run") + " " + fileName);
         } catch (ConfigurationException e) {
             e.printStackTrace();
         }
-        return super.executeInTiming(timeUnit, timeOut).trim();
+        return super.runInTiming(timeUnit, timeOut).trim();
     }
 
     /**

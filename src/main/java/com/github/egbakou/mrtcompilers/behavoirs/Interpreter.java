@@ -42,7 +42,7 @@ public interface Interpreter {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    String executeWithoutTiming(MarathonCompiler compiler)
+    String runWithoutTiming(MarathonCompiler compiler)
             throws InterruptedException, TimeoutException, IOException;
 
     /**
@@ -60,6 +60,6 @@ public interface Interpreter {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    String executeInTiming(MarathonCompiler compiler,TimeUnit timeUnit, Long timeOut)
+    String runInTiming(MarathonCompiler compiler,TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException;
 }

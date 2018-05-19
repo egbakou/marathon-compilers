@@ -46,7 +46,7 @@ public class InterpreterTool implements Interpreter {
 
 
     @Override
-    public String executeWithoutTiming(MarathonCompiler compiler)
+    public String runWithoutTiming(MarathonCompiler compiler)
             throws InterruptedException, TimeoutException, IOException {
         String output = this.processExecutor
                 .directory(compiler.getDirectory())
@@ -59,7 +59,7 @@ public class InterpreterTool implements Interpreter {
     }
 
     @Override
-    public String executeInTiming(MarathonCompiler compiler, TimeUnit timeUnit, Long timeOut)
+    public String runInTiming(MarathonCompiler compiler, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
         String output = this.processExecutor
                 .directory(compiler.getDirectory())

@@ -99,9 +99,9 @@ public class CompiledLanguage extends MarathonCompiler {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    protected String executeWithoutTiming()
+    protected String runWithoutTiming()
             throws InterruptedException, TimeoutException, IOException {
-        return interpreter.executeWithoutTiming(this);
+        return interpreter.runWithoutTiming(this);
     }
 
     /**
@@ -118,9 +118,9 @@ public class CompiledLanguage extends MarathonCompiler {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    protected String executeInTiming(TimeUnit timeUnit, Long timeOut)
+    protected String runInTiming(TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
-        return interpreter.executeInTiming(this, timeUnit, timeOut);
+        return interpreter.runInTiming(this, timeUnit, timeOut);
     }
 
 
@@ -136,13 +136,13 @@ public class CompiledLanguage extends MarathonCompiler {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    protected String compileAndExecuteWithoutTiming(String compileCommand, String executecommand)
+    protected String compileAndRunWithoutTiming(String compileCommand, String executecommand)
             throws InterruptedException, IOException, TimeoutException {
         this.command(compileCommand);
         compiler.compileWithoutTiming(this);
 
         this.command(executecommand);
-        return interpreter.executeWithoutTiming(this);
+        return interpreter.runWithoutTiming(this);
     }
 
 
@@ -163,13 +163,13 @@ public class CompiledLanguage extends MarathonCompiler {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    protected String compileAndExecuteIntiming(String compileCommand, String executecommand, TimeUnit timeUnit, Long timeOut)
+    protected String compileAndRunIntiming(String compileCommand, String executecommand, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
         this.command(compileCommand);
         compiler.compileWithoutTiming(this);
 
         this.command(executecommand);
-        return interpreter.executeInTiming(this, timeUnit, timeOut);
+        return interpreter.runInTiming(this, timeUnit, timeOut);
     }
 
     /**
