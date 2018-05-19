@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 LionCoding <laurent@dorkenooconsulting.com>
+ * Copyright (C) 2018 Egbakou <laurent@dorkenooconsulting.com>
  * Contains fragments of code from zt-exec, rights owned
  * by Apache Software Foundation (ASF).
  *

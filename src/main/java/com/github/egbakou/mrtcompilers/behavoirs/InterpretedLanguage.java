@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 LionCoding <laurent@dorkenooconsulting.com>
+ * Copyright (C) 2018 strategy <laurent@dorkenooconsulting.com>
  * Contains fragments of code from zt-exec, rights owned
  * by Apache Software Foundation (ASF).
  *
@@ -26,6 +26,7 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * Entity using Interpreter strategy algorithms.
+ * Used by interpreted programming lanaguages.
  *
  * @author Laurent Egbakou
  * @since 1.0
@@ -41,14 +42,38 @@ public class InterpretedLanguage extends MarathonCompiler {
 
     }
 
+
     public InterpretedLanguage(File directory, String command) {
         super(directory, command);
     }
 
+    /**
+     * Run file without timing constraints.
+     *
+     * @return the output result.
+     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
+     *                              and the thread is interrupted, either before or during the activity.
+     * @throws TimeoutException     exception thrown when a blocking operation times out.
+     * @throws IOException          signals that an I/O exception of some sort has occurred.
+     */
     protected String executeWithoutTiming() throws InterruptedException, TimeoutException, IOException {
         return interpreter.executeWithoutTiming(this);
     }
 
+    /**
+     * Run file with timing constraints.
+     *
+     * @param timeUnit a represents time durations at a given unit of
+     *                 granularity and provides utility methods to convert across units,
+     *                 and to perform timing and delay operations in these units.
+     * @param timeOut  timeout for running a process. If the process is running too
+     *                 long a {@link TimeoutException} is thrown and the process is destroyed.
+     * @return the output result.
+     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
+     *                              and the thread is interrupted, either before or during the activity.
+     * @throws TimeoutException     exception thrown when a blocking operation times out.
+     * @throws IOException          signals that an I/O exception of some sort has occurred.
+     */
     protected String executeInTiming(TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
         return interpreter.executeInTiming(this, timeUnit, timeOut);
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 LionCoding <laurent@dorkenooconsulting.com>
+ * Copyright (C) 2018 strategy <laurent@dorkenooconsulting.com>
  * Contains fragments of code from zt-exec, rights owned
  * by Apache Software Foundation (ASF).
  *
@@ -31,8 +31,34 @@ import java.util.concurrent.TimeoutException;
  */
 public interface Interpreter {
 
+
+    /**
+     * Run file without timing constraints.
+     *
+     * @param compiler the compiler used to compile the files.
+     * @return the output result.
+     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
+     *                              and the thread is interrupted, either before or during the activity.
+     * @throws TimeoutException     exception thrown when a blocking operation times out.
+     * @throws IOException          signals that an I/O exception of some sort has occurred.
+     */
     String executeWithoutTiming(MarathonCompiler compiler) throws InterruptedException, TimeoutException, IOException;
 
+    /**
+     * Run file with timing constraints.
+     *
+     * @param compiler the compiler used to compile the files.
+     * @param timeUnit a represents time durations at a given unit of
+     *                 granularity and provides utility methods to convert across units,
+     *                 and to perform timing and delay operations in these units.
+     * @param timeOut  timeout for running a process. If the process is running too
+     *                 long a {@link TimeoutException} is thrown and the process is destroyed.
+     * @return the output result.
+     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
+     *                              and the thread is interrupted, either before or during the activity.
+     * @throws TimeoutException     exception thrown when a blocking operation times out.
+     * @throws IOException          signals that an I/O exception of some sort has occurred.
+     */
     String executeInTiming(MarathonCompiler compiler,TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException;
 
 }

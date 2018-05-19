@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 LionCoding <laurent@dorkenooconsulting.com>
+ * Copyright (C) 2018 Egbakou <laurent@dorkenooconsulting.com>
  * Contains fragments of code from zt-exec, rights owned
  * by Apache Software Foundation (ASF).
  *
@@ -25,17 +25,24 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Concrete strategy of Compiler.
+ * Concrete Compiler strategy.
  *
  * @author Laurent Egbakou
  * @since 1.0
  */
 public class CompilerTool implements Compiler {
+    /**
+     * zt-exec process executor
+     */
     ProcessExecutor processExecutor;
 
+    /**
+     * Default constructor.
+     */
     public CompilerTool() {
         processExecutor = new ProcessExecutor();
     }
+
 
     @Override
     public String compileInTiming(MarathonCompiler compiler, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {

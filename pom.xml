@@ -175,7 +175,7 @@
     </profiles>
 
     <organization>
-        <name>DorkenooConsulting</name>
+        <name>Dorkenoo Consulting</name>
         <url>http://www.dorkenooconsulting.com</url>
     </organization>
 
@@ -184,8 +184,8 @@
             <id>laurent</id>
             <name>Laurent</name>
             <email>laurent@dorkenooconsulting.com</email>
-            <url>http://www.linkedin.com/in/egbakou-laurent</url>
-            <organization>DorkenooConsulting</organization>
+            <url>https://www.linkedin.com/in/laurent-egbakou-904831148/</url>
+            <organization>Dorkenoo Consulting</organization>
             <organizationUrl>http://www.dorkenooconsulting.com</organizationUrl>
         </developer>
     </developers>

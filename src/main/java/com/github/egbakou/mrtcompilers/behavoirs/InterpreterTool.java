@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 LionCoding <laurent@dorkenooconsulting.com>
+ * Copyright (C) 2018 Egbakou <laurent@dorkenooconsulting.com>
  * Contains fragments of code from zt-exec, rights owned
  * by Apache Software Foundation (ASF).
  *
@@ -32,8 +32,14 @@ import java.util.concurrent.TimeoutException;
  */
 public class InterpreterTool implements Interpreter {
 
+    /**
+     * zt-exec process executor
+     */
     private ProcessExecutor processExecutor;
 
+    /**
+     * Default constructor.
+     */
     public InterpreterTool() {
         processExecutor = new ProcessExecutor();
     }
@@ -54,7 +60,7 @@ public class InterpreterTool implements Interpreter {
     @Override
     public String executeInTiming(MarathonCompiler compiler, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
 
-            String output = this.processExecutor
+        String output = this.processExecutor
                 .directory(compiler.getDirectory())
                 .commandSplit(compiler.getCommand())
                 .timeout(timeOut, timeUnit)
