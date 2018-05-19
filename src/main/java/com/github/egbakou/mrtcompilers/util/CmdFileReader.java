@@ -36,7 +36,7 @@ public class CmdFileReader {
      * Load a file which contain specific compilation and runnning commands.
      *
      * @return Properties Configuration.
-     * @throws ConfigurationException
+     * @throws ConfigurationException any exception that occurs while initializing a Configuration object.
      */
     public static PropertiesConfiguration loadPropertiesFile() throws ConfigurationException {
         Configurations configs = new Configurations();

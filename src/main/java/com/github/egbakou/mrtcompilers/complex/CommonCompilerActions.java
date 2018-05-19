@@ -99,6 +99,10 @@ public interface CommonCompilerActions {
      *
      * @param fileName file name to compile.
      * @return the output result.
+     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
+     *                              and the thread is interrupted, either before or during the activity.
+     * @throws IOException          signals that an I/O exception of some sort has occurred.
+     * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
     String compileAndRunWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException;
@@ -114,6 +118,10 @@ public interface CommonCompilerActions {
      * @param timeOut  timeout for running a process. If the process is running too
      *                 long a {@link TimeoutException} is thrown and the process is destroyed.
      * @return the output result.
+     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
+     *                              and the thread is interrupted, either before or during the activity.
+     * @throws IOException          signals that an I/O exception of some sort has occurred.
+     * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
     String compileAndRunIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException;
