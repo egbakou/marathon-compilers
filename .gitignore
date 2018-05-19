@@ -1,0 +1,16 @@
+.classpath
+.hg/
+.hgignore
+.hgtags
+.project
+.settings/
+target/
+test.log
+.swp
+
+.idea
+*.iml
+*.ipr
+*.iws
+
+writeLoop.data
