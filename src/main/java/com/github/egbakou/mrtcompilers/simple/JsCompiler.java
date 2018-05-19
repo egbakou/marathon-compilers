@@ -28,11 +28,11 @@ import java.util.concurrent.TimeoutException;
 import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
 
 /**
- * Java Script Compiler.
+ * Java Script Compiler (Nodejs).
  *
  * @author Laurent Egbakou
- * @since 1.0
  * @see InterpretedLanguage
+ * @since 1.0
  */
 public class JsCompiler extends InterpretedLanguage implements CommonInterpreterActions {
 
@@ -42,19 +42,8 @@ public class JsCompiler extends InterpretedLanguage implements CommonInterpreter
     public JsCompiler() {
     }
 
-    /**
-     * Execute file without timing. This method should be avoided
-     * to prevent threads from blocking the execution of the file.
-     *
-     * @param fileName file name with extension.
-     * @return the result of the execution.
-     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
-     *                              and the thread is interrupted, either before or during the activity.
-     * @throws IOException          signals that an I/O exception of some sort has occurred.
-     * @throws TimeoutException     exception thrown when a blocking operation times out.
-     */
     @Override
-    public String executewithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException {
+    public String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("js.run") + " " + fileName);
         } catch (ConfigurationException e) {
@@ -63,21 +52,7 @@ public class JsCompiler extends InterpretedLanguage implements CommonInterpreter
         return super.executeWithoutTiming().trim();
     }
 
-    /**
-     * Execute file with timing constraints. This method is to be recommended.
-     *
-     * @param fileName file name with extension.
-     * @param timeUnit a represents time durations at a given unit of
-     *                 granularity and provides utility methods to convert across units,
-     *                 and to perform timing and delay operations in these units
-     * @param timeOut  timeout for running a process. If the process is running too
-     *                 long a {@link TimeoutException} is thrown and the process is destroyed.
-     * @return the result of the execution.
-     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
-     *                              and the thread is interrupted, either before or during the activity.
-     * @throws IOException          signals that an I/O exception of some sort has occurred.
-     * @throws TimeoutException     exception thrown when a blocking operation times out.
-     */
+
     @Override
     public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException {
         try {
@@ -92,7 +67,7 @@ public class JsCompiler extends InterpretedLanguage implements CommonInterpreter
      * Set directory where file are stored.
      *
      * @param directory a directory.
-     * @return the compiler with new directory value.
+     * @return current Js compiler with new directory value.
      */
     @Override
     public JsCompiler directory(File directory) {

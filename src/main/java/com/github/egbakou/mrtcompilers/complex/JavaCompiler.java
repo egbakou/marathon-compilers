@@ -42,16 +42,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     public JavaCompiler() {
     }
 
-    /**
-     * Compile file without timing.
-     *
-     * @param fileName file name with extension.
-     * @return the result of the execution.
-     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
-     *                              and the thread is interrupted, either before or during the activity.
-     * @throws IOException          signals that an I/O exception of some sort has occurred.
-     * @throws TimeoutException     exception thrown when a blocking operation times out.
-     */
+
     @Override
     public String compileWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException {
         try {
@@ -62,21 +53,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
         return super.compileWithoutTiming().trim();
     }
 
-    /**
-     * Compile file with timing constraints.
-     *
-     * @param fileName file name with extension.
-     * @param timeUnit a represents time durations at a given unit of
-     *                 granularity and provides utility methods to convert across units,
-     *                 and to perform timing and delay operations in these units.
-     * @param timeOut  timeout for running a process. If the process is running too
-     *                 long a {@link TimeoutException} is thrown and the process is destroyed.
-     * @return the result of the execution.
-     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
-     *                              and the thread is interrupted, either before or during the activity.
-     * @throws IOException          signals that an I/O exception of some sort has occurred.
-     * @throws TimeoutException     exception thrown when a blocking operation times out.
-     */
+
     @Override
     public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
         try {
@@ -87,17 +64,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
         return super.compileInTiming(timeUnit, timeOut).trim();
     }
 
-    /**
-     * Execute file without timing. This method should be avoided
-     * to prevent threads from blocking the execution of the file.
-     *
-     * @param fileName file name with extension.
-     * @return the result of the execution.
-     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
-     *                              and the thread is interrupted, either before or during the activity.
-     * @throws IOException          signals that an I/O exception of some sort has occurred.
-     * @throws TimeoutException     exception thrown when a blocking operation times out.
-     */
+
     @Override
     public String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException {
         try {
@@ -108,21 +75,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
         return super.executeWithoutTiming().trim();
     }
 
-    /**
-     * Execute file with timing constraints. This method is to be recommended.
-     *
-     * @param fileName file name with extension.
-     * @param timeUnit a represents time durations at a given unit of
-     *                 granularity and provides utility methods to convert across units,
-     *                 and to perform timing and delay operations in these units.
-     * @param timeOut  timeout for running a process. If the process is running too
-     *                 long a {@link TimeoutException} is thrown and the process is destroyed.
-     * @return the result of the execution.
-     * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
-     *                              and the thread is interrupted, either before or during the activity.
-     * @throws IOException          signals that an I/O exception of some sort has occurred.
-     * @throws TimeoutException     exception thrown when a blocking operation times out.
-     */
+
     @Override
     public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException {
         try {
@@ -133,29 +86,14 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
         return super.executeInTiming(timeUnit, timeOut).trim();
     }
 
-    /**
-     * Compile and execute file without timing constraints.
-     *
-     * @param fileName file name to compile.
-     * @return the result of the execution.
-     */
+
     @Override
     public String compileAndExecuteWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException {
         this.compileWithoutTiming(fileName);
         return this.executeWithoutTiming(fileName);
     }
 
-    /**
-     * Compile and execute file with timing constraints.
-     *
-     * @param fileName file name to compile first.
-     * @param timeUnit a represents time durations at a given unit of
-     *                 granularity and provides utility methods to convert across units,
-     *                 and to perform timing and delay operations in these units.
-     * @param timeOut  timeout for running a process. If the process is running too
-     *                 long a {@link TimeoutException} is thrown and the process is destroyed.
-     * @return the result of the execution.
-     */
+
     @Override
     public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
         this.compileWithoutTiming(fileName);
@@ -167,7 +105,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
      * Set directory where file are stored.
      *
      * @param directory a directory.
-     * @return the compiler with new directory value.
+     * @return the current Java compiler with new directory value.
      */
     @Override
     public JavaCompiler directory(File directory) {

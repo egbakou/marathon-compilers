@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Contain methods to compile and execute files.
+ * Contain methods to compile and run files.
  *
  * @author Laurent Egbakou
  * @since 1.0
@@ -33,7 +33,7 @@ public interface CommonCompilerActions {
      * Compile file without timing constraints.
      *
      * @param fileName file name with extension.
-     * @return the result of the execution.
+     * @return the compilation result.
      * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
      *                              and the thread is interrupted, either before or during the activity.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
@@ -51,7 +51,7 @@ public interface CommonCompilerActions {
      *                 and to perform timing and delay operations in these units.
      * @param timeOut  timeout for running a process. If the process is running too
      *                 long a {@link TimeoutException} is thrown and the process is destroyed.
-     * @return the result of the execution.
+     * @return the compilation result.
      * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
      *                              and the thread is interrupted, either before or during the activity.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
@@ -64,7 +64,7 @@ public interface CommonCompilerActions {
      * to prevent threads from blocking the execution of the file.
      *
      * @param fileName file name with extension.
-     * @return the result of the execution.
+     * @return the output result.
      * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
      *                              and the thread is interrupted, either before or during the activity.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
@@ -73,7 +73,7 @@ public interface CommonCompilerActions {
     String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException;
 
     /**
-     * Execute file with timing constraints. This method is to be recommended.
+     * Run file with timing constraints. This method is to be recommended.
      *
      * @param fileName file name with extension.
      * @param timeUnit a represents time durations at a given unit of
@@ -81,7 +81,7 @@ public interface CommonCompilerActions {
      *                 and to perform timing and delay operations in these units.
      * @param timeOut  timeout for running a process. If the process is running too
      *                 long a {@link TimeoutException} is thrown and the process is destroyed.
-     * @return the result of the execution.
+     * @return the output result.
      * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
      *                              and the thread is interrupted, either before or during the activity.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
@@ -91,16 +91,16 @@ public interface CommonCompilerActions {
 
 
     /**
-     * Compile and execute file without timing constraints.
+     * Compile and run file without timing constraints.
      *
      * @param fileName file name to compile.
-     * @return the result of the execution.
+     * @return the output result.
      */
     String compileAndExecuteWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException;
 
 
     /**
-     * Compile and execute file with timing constraints.
+     * Compile and run file with timing constraints.
      *
      * @param fileName file name to compile first.
      * @param timeUnit a represents time durations at a given unit of
@@ -108,7 +108,7 @@ public interface CommonCompilerActions {
      *                 and to perform timing and delay operations in these units.
      * @param timeOut  timeout for running a process. If the process is running too
      *                 long a {@link TimeoutException} is thrown and the process is destroyed.
-     * @return the result of the execution.
+     * @return the output result.
      */
     String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException;
 }
