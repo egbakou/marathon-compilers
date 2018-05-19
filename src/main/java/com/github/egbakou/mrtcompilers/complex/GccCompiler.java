@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
+import static com.github.egbakou.mrtcompilers.util.Utility.outputFileName;
 
 /**
  * C and C++ compiler.
@@ -35,8 +36,6 @@ import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesF
  */
 public class GccCompiler extends CompiledLanguage implements CommonCompilerActions {
 
-    private static final boolean IS_OS_WINDOWS = System.getProperty("os.name").startsWith("Windows");
-
     /**
      * Default constructor.
      */
@@ -45,12 +44,13 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
 
 
     @Override
-    public String compileWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException {
+    public String compileWithoutTiming(String fileName)
+            throws InterruptedException, TimeoutException, IOException {
         try {
             String command = loadPropertiesFile()
                     .getString("cc++.compile")
                     .replace("*", fileName)
-                    .replace("#", outpoutFileName(fileName));
+                    .replace("#", outputFileName(fileName));
             this.command(command);
         } catch (ConfigurationException e) {
             e.printStackTrace();
@@ -60,12 +60,13 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
 
 
     @Override
-    public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
+    public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException {
         try {
             String command = loadPropertiesFile()
                     .getString("cc++.compile")
                     .replace("*", fileName)
-                    .replace("#", outpoutFileName(fileName));
+                    .replace("#", outputFileName(fileName));
             this.command(command);
         } catch (ConfigurationException e) {
             e.printStackTrace();
@@ -75,21 +76,24 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
 
 
     @Override
-    public String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException {
+    public String executeWithoutTiming(String fileName)
+            throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
         return super.executeWithoutTiming().trim();
     }
 
 
     @Override
-    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException {
+    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
         return super.executeInTiming(timeUnit, timeOut).trim();
     }
 
 
     @Override
-    public String compileAndExecuteWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException {
+    public String compileAndExecuteWithoutTiming(String fileName)
+            throws InterruptedException, TimeoutException, IOException {
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
@@ -97,7 +101,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
             compileCommand = loadPropertiesFile()
                     .getString("cc++.compile")
                     .replace("*", fileName)
-                    .replace("#", outpoutFileName(fileName));
+                    .replace("#", outputFileName(fileName));
             executeResullt = super.compileAndExecuteWithoutTiming(compileCommand, executeCommand).trim();
         } catch (ConfigurationException e) {
             e.printStackTrace();
@@ -108,7 +112,8 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
 
 
     @Override
-    public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
+    public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException {
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
@@ -116,7 +121,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
             compileCommand = loadPropertiesFile()
                     .getString("cc++.compile")
                     .replace("*", fileName)
-                    .replace("#", outpoutFileName(fileName));
+                    .replace("#", outputFileName(fileName));
             executeResullt = super.compileAndExecuteIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
         } catch (ConfigurationException e) {
             e.printStackTrace();
@@ -125,19 +130,6 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
         return executeResullt;
     }
 
-
-    /**
-     * Compilefile output builder.
-     *
-     * @param fileName the filename.
-     * @return the output filename.
-     */
-    private String outpoutFileName(String fileName) {
-        if (IS_OS_WINDOWS)
-            return fileName.split("\\.|/")[0].concat(".exe");
-        else
-            return fileName.split("\\.|/")[0];
-    }
 
     /**
      * Set directory where file are stored.

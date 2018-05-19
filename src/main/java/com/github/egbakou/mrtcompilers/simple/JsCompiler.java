@@ -43,7 +43,8 @@ public class JsCompiler extends InterpretedLanguage implements CommonInterpreter
     }
 
     @Override
-    public String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException {
+    public String executeWithoutTiming(String fileName)
+            throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("js.run") + " " + fileName);
         } catch (ConfigurationException e) {
@@ -54,7 +55,8 @@ public class JsCompiler extends InterpretedLanguage implements CommonInterpreter
 
 
     @Override
-    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException {
+    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("js.run") + " " + fileName);
         } catch (ConfigurationException e) {

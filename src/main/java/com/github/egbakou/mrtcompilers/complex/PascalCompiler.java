@@ -43,7 +43,8 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
 
 
     @Override
-    public String compileWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException {
+    public String compileWithoutTiming(String fileName)
+            throws InterruptedException, TimeoutException, IOException {
         try {
             this.command(loadPropertiesFile().getString("pascal.compile") + " " + fileName);
         } catch (ConfigurationException e) {
@@ -54,7 +55,8 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
 
 
     @Override
-    public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
+    public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException {
         try {
             this.command(loadPropertiesFile().getString("pascal.compile") + " " + fileName);
         } catch (ConfigurationException e) {
@@ -65,21 +67,24 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
 
 
     @Override
-    public String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException {
+    public String executeWithoutTiming(String fileName)
+            throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
         return super.executeWithoutTiming().trim();
     }
 
 
     @Override
-    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException {
+    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
         return super.executeInTiming(timeUnit, timeOut).trim();
     }
 
 
     @Override
-    public String compileAndExecuteWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException {
+    public String compileAndExecuteWithoutTiming(String fileName)
+            throws InterruptedException, TimeoutException, IOException {
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
@@ -94,7 +99,8 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
 
 
     @Override
-    public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
+    public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException {
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;

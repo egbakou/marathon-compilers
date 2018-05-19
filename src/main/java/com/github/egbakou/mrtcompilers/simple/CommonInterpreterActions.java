@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Contain methods to execute files.
+ * Contain methods to run files.
  *
  * @author Laurent Egbakou
  * @since 1.0
@@ -33,14 +33,15 @@ public interface CommonInterpreterActions {
      * Run file without timing. This method should be avoided
      * to prevent threads from blocking the execution of the file.
      *
-     * @param fileName file name with extension.
+     * @param fileName filename with extension.
      * @return the output result.
      * @throws InterruptedException thrown when a thread is waiting, sleeping, or otherwise occupied,
      *                              and the thread is interrupted, either before or during the activity.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException;
+    String executeWithoutTiming(String fileName)
+            throws InterruptedException, IOException, TimeoutException;
 
     /**
      * Run file with timing constraints. This method is to be recommended.
@@ -57,5 +58,6 @@ public interface CommonInterpreterActions {
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException;
+    String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, IOException, TimeoutException;
 }

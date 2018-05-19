@@ -46,7 +46,8 @@ public interface Compiler {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    String compileInTiming(MarathonCompiler compiler, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException;
+    String compileInTiming(MarathonCompiler compiler, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException;
 
     /**
      * Compile file without timing constraints.
@@ -58,6 +59,7 @@ public interface Compiler {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    String compileWithoutTiming(MarathonCompiler compiler) throws InterruptedException, TimeoutException, IOException;
+    String compileWithoutTiming(MarathonCompiler compiler)
+            throws InterruptedException, TimeoutException, IOException;
 
 }

@@ -44,7 +44,8 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
 
 
     @Override
-    public String compileWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException {
+    public String compileWithoutTiming(String fileName)
+            throws InterruptedException, TimeoutException, IOException {
         try {
             this.command(loadPropertiesFile().getString("java.compile") + " " + fileName);
         } catch (ConfigurationException e) {
@@ -55,7 +56,8 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
 
 
     @Override
-    public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
+    public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException {
         try {
             this.command(loadPropertiesFile().getString("java.compile") + " " + fileName);
         } catch (ConfigurationException e) {
@@ -66,7 +68,8 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
 
 
     @Override
-    public String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException {
+    public String executeWithoutTiming(String fileName)
+            throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("java.run") + " " + fileName.split("\\.|/")[0]);
         } catch (ConfigurationException e) {
@@ -77,7 +80,8 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
 
 
     @Override
-    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException {
+    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("java.run") + " " + fileName.split("\\.|/")[0]);
         } catch (ConfigurationException e) {
@@ -88,14 +92,16 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
 
 
     @Override
-    public String compileAndExecuteWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException {
+    public String compileAndExecuteWithoutTiming(String fileName)
+            throws InterruptedException, TimeoutException, IOException {
         this.compileWithoutTiming(fileName);
         return this.executeWithoutTiming(fileName);
     }
 
 
     @Override
-    public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
+    public String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException {
         this.compileWithoutTiming(fileName);
         return this.executeInTiming(fileName, timeUnit, timeOut);
     }

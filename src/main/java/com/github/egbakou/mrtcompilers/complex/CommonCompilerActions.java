@@ -39,7 +39,8 @@ public interface CommonCompilerActions {
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String compileWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException;
+    String compileWithoutTiming(String fileName)
+            throws InterruptedException, TimeoutException, IOException;
 
 
     /**
@@ -57,7 +58,8 @@ public interface CommonCompilerActions {
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException;
+    String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException;
 
     /**
      * Execute file without timing. This method should be avoided
@@ -70,7 +72,8 @@ public interface CommonCompilerActions {
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException;
+    String executeWithoutTiming(String fileName)
+            throws InterruptedException, IOException, TimeoutException;
 
     /**
      * Run file with timing constraints. This method is to be recommended.
@@ -87,7 +90,8 @@ public interface CommonCompilerActions {
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException;
+    String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, IOException, TimeoutException;
 
 
     /**
@@ -96,7 +100,8 @@ public interface CommonCompilerActions {
      * @param fileName file name to compile.
      * @return the output result.
      */
-    String compileAndExecuteWithoutTiming(String fileName) throws InterruptedException, TimeoutException, IOException;
+    String compileAndExecuteWithoutTiming(String fileName)
+            throws InterruptedException, TimeoutException, IOException;
 
 
     /**
@@ -110,5 +115,6 @@ public interface CommonCompilerActions {
      *                 long a {@link TimeoutException} is thrown and the process is destroyed.
      * @return the output result.
      */
-    String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException;
+    String compileAndExecuteIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException;
 }

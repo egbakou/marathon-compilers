@@ -45,7 +45,8 @@ public class CompilerTool implements Compiler {
 
 
     @Override
-    public String compileInTiming(MarathonCompiler compiler, TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
+    public String compileInTiming(MarathonCompiler compiler, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException {
         String output = this.processExecutor
                 .directory(compiler.getDirectory())
                 .commandSplit(compiler.getCommand())
@@ -57,7 +58,8 @@ public class CompilerTool implements Compiler {
     }
 
     @Override
-    public String compileWithoutTiming(MarathonCompiler compiler) throws InterruptedException, TimeoutException, IOException {
+    public String compileWithoutTiming(MarathonCompiler compiler)
+            throws InterruptedException, TimeoutException, IOException {
         String output = this.processExecutor
                 .directory(compiler.getDirectory())
                 .commandSplit(compiler.getCommand())

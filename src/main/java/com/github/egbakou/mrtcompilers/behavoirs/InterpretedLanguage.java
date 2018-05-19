@@ -75,7 +75,8 @@ public class InterpretedLanguage extends MarathonCompiler {
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      */
-    protected String executeInTiming(TimeUnit timeUnit, Long timeOut) throws InterruptedException, TimeoutException, IOException {
+    protected String executeInTiming(TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, TimeoutException, IOException {
         return interpreter.executeInTiming(this, timeUnit, timeOut);
     }
 

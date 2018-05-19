@@ -45,7 +45,8 @@ public class PythonCompiler extends InterpretedLanguage implements CommonInterpr
 
 
     @Override
-    public String executeWithoutTiming(String fileName) throws InterruptedException, IOException, TimeoutException {
+    public String executeWithoutTiming(String fileName)
+            throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("python.run") + " " + fileName);
         } catch (ConfigurationException e) {
@@ -56,7 +57,8 @@ public class PythonCompiler extends InterpretedLanguage implements CommonInterpr
 
 
     @Override
-    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut) throws InterruptedException, IOException, TimeoutException {
+    public String executeInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
+            throws InterruptedException, IOException, TimeoutException {
         try {
             this.command(loadPropertiesFile().getString("python.run") + " " + fileName);
         } catch (ConfigurationException e) {
