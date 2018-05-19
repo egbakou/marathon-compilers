@@ -18,9 +18,11 @@
 package com.github.egbakou.mrtcompilers.simple;
 
 import com.github.egbakou.mrtcompilers.complex.GccCompiler;
+import com.github.egbakou.mrtcompilers.complex.JavaCompiler;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -57,9 +59,9 @@ public class AllTest {
         System.out.println(out);*/
 
     public static void main(String[] args) throws InterruptedException, IOException, TimeoutException {
-        String out = new GccCompiler()
+        String out = new JavaCompiler()
                 .directory(new File("/home/laurent/Documents"))
-                .compileAndRunWithoutTiming("problem1.c");
+                .compileAndRunIntiming("Fenetre.java",TimeUnit.SECONDS,3L);
 
         System.out.println(out);
 
