@@ -112,7 +112,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
 
 
     @Override
-    public String compileAndRunIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    public String compileAndRunInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);

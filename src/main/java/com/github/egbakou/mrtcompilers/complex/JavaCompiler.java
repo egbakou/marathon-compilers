@@ -100,7 +100,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
 
 
     @Override
-    public String compileAndRunIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    public String compileAndRunInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
         this.compileWithoutTiming(fileName);
         return this.runInTiming(fileName, timeUnit, timeOut);

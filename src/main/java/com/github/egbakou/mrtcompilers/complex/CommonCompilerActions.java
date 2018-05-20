@@ -123,6 +123,6 @@ public interface CommonCompilerActions {
      * @throws IOException          signals that an I/O exception of some sort has occurred.
      * @throws TimeoutException     exception thrown when a blocking operation times out.
      */
-    String compileAndRunIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    String compileAndRunInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException;
 }

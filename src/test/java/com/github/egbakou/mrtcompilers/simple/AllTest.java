@@ -17,8 +17,10 @@
  */
 package com.github.egbakou.mrtcompilers.simple;
 
+import com.github.egbakou.mrtcompilers.complex.CSharpCompiler;
 import com.github.egbakou.mrtcompilers.complex.GccCompiler;
 import com.github.egbakou.mrtcompilers.complex.JavaCompiler;
+import com.github.egbakou.mrtcompilers.complex.PascalCompiler;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,10 +60,12 @@ public class AllTest {
 
         System.out.println(out);*/
 
-    public static void main(String[] args) throws InterruptedException, IOException, TimeoutException {
-        String out = new JavaCompiler()
+    public static void main(String[] args) throws
+            InterruptedException, IOException, TimeoutException {
+
+        String out = new CSharpCompiler()
                 .directory(new File("/home/laurent/Documents"))
-                .compileAndRunIntiming("Fenetre.java",TimeUnit.SECONDS,3L);
+                .compileAndRunInTiming("euler1.cs",TimeUnit.SECONDS,3L);
 
         System.out.println(out);
 

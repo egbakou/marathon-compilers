@@ -111,7 +111,7 @@ public class CSharpCompiler extends CompiledLanguage implements CommonCompilerAc
 
 
     @Override
-    public String compileAndRunIntiming(String fileName, TimeUnit timeUnit, Long timeOut)
+    public String compileAndRunInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
         String compileCommand;
         String executeCommand;
@@ -134,8 +134,8 @@ public class CSharpCompiler extends CompiledLanguage implements CommonCompilerAc
      * @return current C# compiler with new directory value.
      */
     @Override
-    public MarathonCompiler directory(File directory) {
-        return super.directory(directory);
+    public CSharpCompiler directory(File directory) {
+        return (CSharpCompiler) super.directory(directory);
     }
 
 
