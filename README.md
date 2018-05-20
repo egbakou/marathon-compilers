@@ -7,6 +7,21 @@ Marathon Compilers
 This project was created to meet the need for compilation and execution of files during the programming contest we organized in [our university](http://www.iai-togo.com), a competition in which there was a web application with several compilers compiling and running the files of participants.
 This project was based on the **zt-exec** project which allows to run external processes from **Java**. It provides several classes like **JavaCompiler, PythonCompiler, GccCompiler**, ... It is designed to be powerful but still easy to use.
 
+## Installation
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.egbakou/marathon-compilers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.egbakou/marathon-compilers)
+
+The project artifacts are available in [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ccom.github.egbakou).
+
+To include it in your maven project then you have to specify the dependency.
+
+```xml
+<dependency>
+    <groupId>com.github.egbakou</groupId>
+    <artifactId>marathon-compilers</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+
 ## Motivation
 
 There are many approaches to take when running external processes from Java. There are the **JRE** options such as the **Runtime.exec()** and **ProcessBuilder**. Also there is the [Apache Commons Exec](http://commons.apache.org/proper/commons-exec/).  
