@@ -95,6 +95,13 @@ To use this library, you must install:
 	sudo apt install mono-devel
 	## Test installation: hello.cs example
 	csc hello.cs
+	--------------------------------------------------
+	## =>Kotlin
+	curl -s https://get.sdkman.io | bash
+	sdk install kotlin
+	## Test installation: Problem1.kt example
+  	kotlinc Problem1.kt -include-runtime -d hello.jar
+  	java -jar Problem1.jar
 
 This library also works on the Windows OS. For use on the Windows OS, install the equivalent compilers but provide the same compilation and execution commands as those in the example above. 😊
 
@@ -117,7 +124,7 @@ InterruptedException, IOException, TimeoutException {
     }
 ```
 
-* Compile java file without constraints(is not recommanded in competition contest; Read method documentation for details)
+* Compile java file without timing constraints (Runis not recommanded in competition contest; Read method documentation for details)
 
 ```java
 public static void main(String[] args) throws 
@@ -234,3 +241,20 @@ InterruptedException, IOException, TimeoutException {
     }
 ```
 * Method *compileAndRunWithoutTiming* is also avialable for CSharpCompiler class.
+
+#### Kotlin compiler
+* Compile and Run Kotlin file with timing constraints
+* Running with a timeout of 3 seconds
+```java
+public static void main(String[] args) throws 
+InterruptedException, IOException, TimeoutException {
+
+        String out = new KotlinCompiler()
+                .directory(new File("/home/laurent/Documents"))
+                .compileAndRunInTiming("Problem001.kt",TimeUnit.SECONDS,3L);
+
+        System.out.println(out);
+
+    }
+```
+* Method *compileAndRunWithoutTiming* is also avialable for KotlinCompiler class.
