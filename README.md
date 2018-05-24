@@ -8,7 +8,7 @@ This project was created to meet the need for compilation and execution of files
 This project was based on the **zt-exec** project which allows to run external processes from **Java**. It provides several classes like **JavaCompiler, PythonCompiler, GccCompiler**, ... It is designed to be powerful but still easy to use.
 
 ## Installation
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.egbakou/marathon-compilers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.egbakou/marathon-compilers)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.egbakou/marathon-compilers/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.egbakou/marathon-compilers) [![Join the chat at https://gitter.im/egbakou/Lobby](https://badges.gitter.im/egbakou/Lobby.svg)](https://gitter.im/egbakou/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The project artifacts are available in [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ccom.github.egbakou).
 
