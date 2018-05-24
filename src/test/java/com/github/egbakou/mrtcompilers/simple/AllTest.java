@@ -59,15 +59,21 @@ public class AllTest {
                 .compileAndRunWithoutTiming("problem1.c");
 
         System.out.println(out);*/
-
-    public static void main(String[] args) throws
-            InterruptedException, IOException, TimeoutException {
-
-        String out = new CSharpCompiler()
+    /*
+    String out = new CSharpCompiler()
                 .directory(new File("/home/laurent/Documents"))
                 .compileAndRunInTiming("euler1.cs",TimeUnit.SECONDS,3L);
 
         System.out.println(out);
+     */
 
+    public static void main(String[] args) throws
+            InterruptedException, IOException, TimeoutException {
+
+        String out = new PythonCompiler()
+                .directory(new File("/home/laurent/Documents"))
+                .runWithoutTiming("p001.py");
+
+        System.out.println(out);
     }
 }

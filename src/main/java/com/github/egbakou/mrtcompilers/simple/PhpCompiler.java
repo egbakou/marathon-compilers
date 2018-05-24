@@ -18,14 +18,13 @@
 package com.github.egbakou.mrtcompilers.simple;
 
 import com.github.egbakou.mrtcompilers.behavoirs.InterpretedLanguage;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
+import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
 
 /**
  * PHP compiler (PHP Cli).
@@ -45,11 +44,7 @@ public class PhpCompiler extends InterpretedLanguage implements CommonInterprete
     @Override
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
-        try {
-            this.command(loadPropertiesFile().getString("php.run") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("php.run") + " " + fileName);
         return super.runWithoutTiming().trim();
     }
 
@@ -57,11 +52,7 @@ public class PhpCompiler extends InterpretedLanguage implements CommonInterprete
     @Override
     public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
-        try {
-            this.command(loadPropertiesFile().getString("php.run") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("php.run") + " " + fileName);
         return super.runInTiming(timeUnit, timeOut).trim();
     }
 

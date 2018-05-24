@@ -13,7 +13,8 @@
     <url>https://github.com/egbakou/marathon-compilers</url>
     <description>Compilation library for programming competitions at IAI-TOGO based on zt-exec project.
         This library can be used to: set up online compilers,
-        a platform for compiling and running programs during programming competitions.</description>
+        a platform for compiling and running programs during programming competitions.
+    </description>
 
     <licenses>
         <license>
@@ -70,16 +71,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-configuration2</artifactId>
-            <version>2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.9.3</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>

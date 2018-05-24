@@ -28,7 +28,7 @@ public class Utility {
     private static final boolean IS_OS_WINDOWS = System.getProperty("os.name").startsWith("Windows");
 
     /**
-     * Compilefile output builder.
+     * Compiledfile output builder.
      *
      * @param fileName the filename.
      * @return the output filename.

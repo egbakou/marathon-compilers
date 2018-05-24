@@ -18,14 +18,13 @@
 package com.github.egbakou.mrtcompilers.complex;
 
 import com.github.egbakou.mrtcompilers.behavoirs.CompiledLanguage;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
+import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
 
 /**
  * Free Pascal Compiler.(FPC)
@@ -45,11 +44,7 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
     @Override
     public String compileWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException {
-        try {
-            this.command(loadPropertiesFile().getString("pascal.compile") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("pascal.compile") + " " + fileName);
         return super.compileWithoutTiming().trim();
     }
 
@@ -57,11 +52,7 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
     @Override
     public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
-        try {
-            this.command(loadPropertiesFile().getString("pascal.compile") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("pascal.compile") + " " + fileName);
         return super.compileInTiming(timeUnit, timeOut).trim();
     }
 
@@ -88,12 +79,8 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
-        try {
-            compileCommand = loadPropertiesFile().getString("pascal.compile") + " " + fileName;
-            executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        compileCommand = loadAllCommands().get("pascal.compile") + " " + fileName;
+        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
         return executeResullt;
     }
 
@@ -104,12 +91,8 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
-        try {
-            compileCommand = loadPropertiesFile().getString("pascal.compile") + " " + fileName;
-            executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        compileCommand = loadAllCommands().get("pascal.compile") + " " + fileName;
+        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
         return executeResullt;
     }
 

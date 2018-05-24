@@ -19,9 +19,7 @@ package com.github.egbakou.mrtcompilers.simple;
 
 import com.github.egbakou.mrtcompilers.behavoirs.InterpretedLanguage;
 
-import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
-
-import org.apache.commons.configuration2.ex.ConfigurationException;
+import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,11 +45,7 @@ public class PythonCompiler extends InterpretedLanguage implements CommonInterpr
     @Override
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
-        try {
-            this.command(loadPropertiesFile().getString("python.run") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("python.run") + " " + fileName);
         return super.runWithoutTiming().trim();
     }
 
@@ -59,11 +53,7 @@ public class PythonCompiler extends InterpretedLanguage implements CommonInterpr
     @Override
     public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
-        try {
-            this.command(loadPropertiesFile().getString("python.run") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("python.run") + " " + fileName);
         return super.runInTiming(timeUnit, timeOut);
     }
 

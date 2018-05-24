@@ -18,14 +18,13 @@
 package com.github.egbakou.mrtcompilers.complex;
 
 import com.github.egbakou.mrtcompilers.behavoirs.CompiledLanguage;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
+import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
 
 /**
  * Java compiler.
@@ -46,11 +45,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     @Override
     public String compileWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException {
-        try {
-            this.command(loadPropertiesFile().getString("java.compile") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("java.compile") + " " + fileName);
         return super.compileWithoutTiming().trim();
     }
 
@@ -58,11 +53,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     @Override
     public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
-        try {
-            this.command(loadPropertiesFile().getString("java.compile") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("java.compile") + " " + fileName);
         return super.compileInTiming(timeUnit, timeOut).trim();
     }
 
@@ -70,11 +61,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     @Override
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
-        try {
-            this.command(loadPropertiesFile().getString("java.run") + " " + fileName.split("\\.|/")[0]);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("java.run") + " " + fileName.split("\\.|/")[0]);
         return super.runWithoutTiming().trim();
     }
 
@@ -82,11 +69,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     @Override
     public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
-        try {
-            this.command(loadPropertiesFile().getString("java.run") + " " + fileName.split("\\.|/")[0]);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("java.run") + " " + fileName.split("\\.|/")[0]);
         return super.runInTiming(timeUnit, timeOut).trim();
     }
 

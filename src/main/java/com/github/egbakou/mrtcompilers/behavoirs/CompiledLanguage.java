@@ -18,14 +18,13 @@
 package com.github.egbakou.mrtcompilers.behavoirs;
 
 import com.github.egbakou.mrtcompilers.MarathonCompiler;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
+import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
 
 /**
  * Entity using Compiler strategy algorithms.
@@ -182,12 +181,10 @@ public class CompiledLanguage extends MarathonCompiler {
         // command example is: euler1.exe
         String command = null;
         if (IS_OS_WINDOWS) command = fileName.split("\\.|/")[0].concat(".exe");
-        else try {
+        else
             // command example is: ./euler1
-            command = loadPropertiesFile().getString("langage.run.linux").concat(fileName.split("\\.|/")[0]);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+            command = loadAllCommands().get("langage.run.linux").concat(fileName.split("\\.|/")[0]);
+
         return command;
     }
 

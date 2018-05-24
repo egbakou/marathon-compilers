@@ -18,14 +18,13 @@
 package com.github.egbakou.mrtcompilers.complex;
 
 import com.github.egbakou.mrtcompilers.behavoirs.CompiledLanguage;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
+import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
 import static com.github.egbakou.mrtcompilers.util.Utility.outputFileName;
 
 /**
@@ -46,15 +45,11 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
     @Override
     public String compileWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException {
-        try {
-            String command = loadPropertiesFile()
-                    .getString("cc++.compile")
-                    .replace("*", fileName)
-                    .replace("#", outputFileName(fileName));
-            this.command(command);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        String command = loadAllCommands()
+                .get("cc++.compile")
+                .replace("*", fileName)
+                .replace("#", outputFileName(fileName));
+        this.command(command);
         return super.compileWithoutTiming().trim();
     }
 
@@ -62,15 +57,11 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
     @Override
     public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
-        try {
-            String command = loadPropertiesFile()
-                    .getString("cc++.compile")
-                    .replace("*", fileName)
-                    .replace("#", outputFileName(fileName));
-            this.command(command);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        String command = loadAllCommands()
+                .get("cc++.compile")
+                .replace("*", fileName)
+                .replace("#", outputFileName(fileName));
+        this.command(command);
         return super.compileInTiming(timeUnit, timeOut).trim();
     }
 
@@ -97,16 +88,11 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
-        try {
-            compileCommand = loadPropertiesFile()
-                    .getString("cc++.compile")
-                    .replace("*", fileName)
-                    .replace("#", outputFileName(fileName));
-            executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
-
+        compileCommand = loadAllCommands()
+                .get("cc++.compile")
+                .replace("*", fileName)
+                .replace("#", outputFileName(fileName));
+        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
         return executeResullt;
     }
 
@@ -117,16 +103,11 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
         String compileCommand;
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
-        try {
-            compileCommand = loadPropertiesFile()
-                    .getString("cc++.compile")
-                    .replace("*", fileName)
-                    .replace("#", outputFileName(fileName));
-            executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
-
+        compileCommand = loadAllCommands()
+                .get("cc++.compile")
+                .replace("*", fileName)
+                .replace("#", outputFileName(fileName));
+        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
         return executeResullt;
     }
 

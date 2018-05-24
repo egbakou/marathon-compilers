@@ -19,14 +19,13 @@ package com.github.egbakou.mrtcompilers.complex;
 
 import com.github.egbakou.mrtcompilers.MarathonCompiler;
 import com.github.egbakou.mrtcompilers.behavoirs.CompiledLanguage;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import static com.github.egbakou.mrtcompilers.util.CmdFileReader.loadPropertiesFile;
+import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
 import static com.github.egbakou.mrtcompilers.util.Utility.outputFileName;
 
 /**
@@ -47,11 +46,7 @@ public class CSharpCompiler extends CompiledLanguage implements CommonCompilerAc
     @Override
     public String compileWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException {
-        try {
-            this.command(loadPropertiesFile().getString("cSharp.compile") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("cSharp.compile") + " " + fileName);
         return super.compileWithoutTiming().trim();
     }
 
@@ -59,11 +54,7 @@ public class CSharpCompiler extends CompiledLanguage implements CommonCompilerAc
     @Override
     public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
-        try {
-            this.command(loadPropertiesFile().getString("cSharp.compile") + " " + fileName);
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("cSharp.compile") + " " + fileName);
         return super.compileInTiming(timeUnit, timeOut).trim();
     }
 
@@ -71,11 +62,7 @@ public class CSharpCompiler extends CompiledLanguage implements CommonCompilerAc
     @Override
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
-        try {
-            this.command(loadPropertiesFile().getString("cSharp.run") + " " + outputFileName(fileName));
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+        this.command(loadAllCommands().get("cSharp.run") + " " + outputFileName(fileName));
         return super.runWithoutTiming().trim();
     }
 
@@ -83,12 +70,7 @@ public class CSharpCompiler extends CompiledLanguage implements CommonCompilerAc
     @Override
     public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
-        try {
-            this.command(loadPropertiesFile().getString("cSharp.run") + " " + outputFileName(fileName));
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
-
+        this.command(loadAllCommands().get("cSharp.run") + " " + outputFileName(fileName));
         return super.runInTiming(timeUnit, timeOut).trim();
     }
 
@@ -99,13 +81,11 @@ public class CSharpCompiler extends CompiledLanguage implements CommonCompilerAc
         String compileCommand;
         String executeCommand;
         String executeResullt = null;
-        try {
-            compileCommand = loadPropertiesFile().getString("cSharp.compile") + " " + outputFileName(fileName);
-            executeCommand = loadPropertiesFile().getString("cSharp.run") + " " + outputFileName(fileName);
-            executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+
+        compileCommand = loadAllCommands().get("cSharp.compile") + " " + outputFileName(fileName);
+        executeCommand = loadAllCommands().get("cSharp.run") + " " + outputFileName(fileName);
+        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
+
         return executeResullt;
     }
 
@@ -116,13 +96,11 @@ public class CSharpCompiler extends CompiledLanguage implements CommonCompilerAc
         String compileCommand;
         String executeCommand;
         String executeResullt = null;
-        try {
-            compileCommand = loadPropertiesFile().getString("cSharp.compile") + " " + outputFileName(fileName);
-            executeCommand = loadPropertiesFile().getString("cSharp.run") + " " + outputFileName(fileName);
-            executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
-        } catch (ConfigurationException e) {
-            e.printStackTrace();
-        }
+
+        compileCommand = loadAllCommands().get("cSharp.compile") + " " + outputFileName(fileName);
+        executeCommand = loadAllCommands().get("cSharp.run") + " " + outputFileName(fileName);
+        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
+
         return executeResullt;
     }
 

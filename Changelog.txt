@@ -1,3 +1,7 @@
 ********************************************
   Marathon Compilers Changelog
 ********************************************
+1.1 (23th May 2018)
+* Fixed configuration2 Execption when loading properties file
+* Fixed ProcessExecutor.commandSplit()
+* Removed cmd.properties file and using HashMap to store commands
