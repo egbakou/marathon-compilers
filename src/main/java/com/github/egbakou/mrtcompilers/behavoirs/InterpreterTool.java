@@ -54,8 +54,7 @@ public class InterpreterTool implements Interpreter {
                 .readOutput(true)
                 .execute()
                 .outputUTF8();
-
-        return output;
+        return output.trim();
     }
 
     @Override
@@ -68,7 +67,7 @@ public class InterpreterTool implements Interpreter {
                 .readOutput(true)
                 .execute()
                 .outputUTF8();
-        return output;
+        return output.trim();
     }
 
 

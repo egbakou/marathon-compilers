@@ -45,7 +45,7 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
     public String compileWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException {
         this.command(loadAllCommands().get("pascal.compile") + " " + fileName);
-        return super.compileWithoutTiming().trim();
+        return super.compileWithoutTiming();
     }
 
 
@@ -53,7 +53,7 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
     public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
         this.command(loadAllCommands().get("pascal.compile") + " " + fileName);
-        return super.compileInTiming(timeUnit, timeOut).trim();
+        return super.compileInTiming(timeUnit, timeOut);
     }
 
 
@@ -61,7 +61,7 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
-        return super.runWithoutTiming().trim();
+        return super.runWithoutTiming();
     }
 
 
@@ -69,7 +69,7 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
     public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
-        return super.runInTiming(timeUnit, timeOut).trim();
+        return super.runInTiming(timeUnit, timeOut);
     }
 
 
@@ -80,7 +80,7 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
         compileCommand = loadAllCommands().get("pascal.compile") + " " + fileName;
-        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
+        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand);
         return executeResullt;
     }
 
@@ -92,7 +92,7 @@ public class PascalCompiler extends CompiledLanguage implements CommonCompilerAc
         String executeCommand = super.checkOsExecutableFile(fileName);
         String executeResullt = null;
         compileCommand = loadAllCommands().get("pascal.compile") + " " + fileName;
-        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
+        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut);
         return executeResullt;
     }
 

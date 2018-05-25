@@ -19,12 +19,12 @@ package com.github.egbakou.mrtcompilers.simple;
 
 import com.github.egbakou.mrtcompilers.behavoirs.InterpretedLanguage;
 
-import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
+import static com.github.egbakou.mrtcompilers.util.CmdReader.loadAllCommands;
 
 /**
  * Python interpreter.
@@ -46,7 +46,7 @@ public class PythonCompiler extends InterpretedLanguage implements CommonInterpr
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         this.command(loadAllCommands().get("python.run") + " " + fileName);
-        return super.runWithoutTiming().trim();
+        return super.runWithoutTiming();
     }
 
 

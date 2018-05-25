@@ -47,7 +47,7 @@ public class KotlinCompiler extends CompiledLanguage implements CommonCompilerAc
                 .replace("*", fileName)
                 .replace("#", fileName.split("\\.|/")[0]+".jar");
         this.command(command);
-        return super.compileWithoutTiming().trim();
+        return super.compileWithoutTiming();
     }
 
 
@@ -59,7 +59,7 @@ public class KotlinCompiler extends CompiledLanguage implements CommonCompilerAc
                 .replace("*", fileName)
                 .replace("#", fileName.split("\\.|/")[0]+".jar");
         this.command(command);
-        return super.compileInTiming(timeUnit, timeOut).trim();
+        return super.compileInTiming(timeUnit, timeOut);
     }
 
 
@@ -70,7 +70,7 @@ public class KotlinCompiler extends CompiledLanguage implements CommonCompilerAc
                 .get("kotlin.run")
                 .replace("#", fileName.split("\\.|/")[0]+".jar")
         );
-        return super.runWithoutTiming().trim();
+        return super.runWithoutTiming();
     }
 
 
@@ -81,7 +81,7 @@ public class KotlinCompiler extends CompiledLanguage implements CommonCompilerAc
                 .get("kotlin.run")
                 .replace("#", fileName.split("\\.|/")[0]+".jar")
         );
-        return super.runInTiming(timeUnit, timeOut).trim();
+        return super.runInTiming(timeUnit, timeOut);
     }
 
 
@@ -97,7 +97,7 @@ public class KotlinCompiler extends CompiledLanguage implements CommonCompilerAc
                 .get("kotlin.compile")
                 .replace("*", fileName)
                 .replace("#", fileName.split("\\.|/")[0]+".jar");
-        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
+        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand);
         return executeResullt;
     }
 
@@ -114,7 +114,7 @@ public class KotlinCompiler extends CompiledLanguage implements CommonCompilerAc
                 .get("kotlin.compile")
                 .replace("*", fileName)
                 .replace("#", fileName.split("\\.|/")[0]+".jar");
-        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
+        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut);
         return executeResullt;
     }
 

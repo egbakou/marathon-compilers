@@ -45,7 +45,7 @@ public class JsCompiler extends InterpretedLanguage implements CommonInterpreter
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         this.command(loadAllCommands().get("js.run") + " " + fileName);
-        return super.runWithoutTiming().trim();
+        return super.runWithoutTiming();
     }
 
 

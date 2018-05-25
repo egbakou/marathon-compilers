@@ -54,7 +54,7 @@ public class CompilerTool implements Compiler {
                 .readOutput(true)
                 .execute()
                 .outputUTF8();
-        return output;
+        return output.trim();
     }
 
     @Override
@@ -66,8 +66,7 @@ public class CompilerTool implements Compiler {
                 .readOutput(true)
                 .execute()
                 .outputUTF8();
-
-        return output;
+        return output.trim();
     }
 
     public ProcessExecutor getProcessExecutor() {

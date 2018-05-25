@@ -50,7 +50,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
                 .replace("*", fileName)
                 .replace("#", outputFileName(fileName));
         this.command(command);
-        return super.compileWithoutTiming().trim();
+        return super.compileWithoutTiming();
     }
 
 
@@ -62,7 +62,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
                 .replace("*", fileName)
                 .replace("#", outputFileName(fileName));
         this.command(command);
-        return super.compileInTiming(timeUnit, timeOut).trim();
+        return super.compileInTiming(timeUnit, timeOut);
     }
 
 
@@ -70,7 +70,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
-        return super.runWithoutTiming().trim();
+        return super.runWithoutTiming();
     }
 
 
@@ -78,7 +78,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
     public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
         this.command(checkOsExecutableFile(fileName));
-        return super.runInTiming(timeUnit, timeOut).trim();
+        return super.runInTiming(timeUnit, timeOut);
     }
 
 
@@ -92,7 +92,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
                 .get("cc++.compile")
                 .replace("*", fileName)
                 .replace("#", outputFileName(fileName));
-        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand).trim();
+        executeResullt = super.compileAndRunWithoutTiming(compileCommand, executeCommand);
         return executeResullt;
     }
 
@@ -107,7 +107,7 @@ public class GccCompiler extends CompiledLanguage implements CommonCompilerActio
                 .get("cc++.compile")
                 .replace("*", fileName)
                 .replace("#", outputFileName(fileName));
-        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut).trim();
+        executeResullt = super.compileAndRunIntiming(compileCommand, executeCommand, timeUnit, timeOut);
         return executeResullt;
     }
 

@@ -45,7 +45,7 @@ public class PhpCompiler extends InterpretedLanguage implements CommonInterprete
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         this.command(loadAllCommands().get("php.run") + " " + fileName);
-        return super.runWithoutTiming().trim();
+        return super.runWithoutTiming();
     }
 
 
@@ -53,7 +53,7 @@ public class PhpCompiler extends InterpretedLanguage implements CommonInterprete
     public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
         this.command(loadAllCommands().get("php.run") + " " + fileName);
-        return super.runInTiming(timeUnit, timeOut).trim();
+        return super.runInTiming(timeUnit, timeOut);
     }
 
     /**

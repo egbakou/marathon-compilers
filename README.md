@@ -29,7 +29,7 @@ There are many approaches to take when running external processes from Java. The
 Some of the reasons for this library
 
 * Represent each compiler of the programming languages used by a class.
-* Return result after executing the uploded fileYou can also install the compilers and interpreters that you need only..
+* Return result after executing the uploded file
  * Reading/writing to streams
  * Redirecting stderr to stdout
 * Improved handling of timeouts

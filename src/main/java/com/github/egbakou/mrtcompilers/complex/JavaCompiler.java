@@ -46,7 +46,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     public String compileWithoutTiming(String fileName)
             throws InterruptedException, TimeoutException, IOException {
         this.command(loadAllCommands().get("java.compile") + " " + fileName);
-        return super.compileWithoutTiming().trim();
+        return super.compileWithoutTiming();
     }
 
 
@@ -54,7 +54,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     public String compileInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, TimeoutException, IOException {
         this.command(loadAllCommands().get("java.compile") + " " + fileName);
-        return super.compileInTiming(timeUnit, timeOut).trim();
+        return super.compileInTiming(timeUnit, timeOut);
     }
 
 
@@ -62,7 +62,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     public String runWithoutTiming(String fileName)
             throws InterruptedException, IOException, TimeoutException {
         this.command(loadAllCommands().get("java.run") + " " + fileName.split("\\.|/")[0]);
-        return super.runWithoutTiming().trim();
+        return super.runWithoutTiming();
     }
 
 
@@ -70,7 +70,7 @@ public class JavaCompiler extends CompiledLanguage implements CommonCompilerActi
     public String runInTiming(String fileName, TimeUnit timeUnit, Long timeOut)
             throws InterruptedException, IOException, TimeoutException {
         this.command(loadAllCommands().get("java.run") + " " + fileName.split("\\.|/")[0]);
-        return super.runInTiming(timeUnit, timeOut).trim();
+        return super.runInTiming(timeUnit, timeOut);
     }
 
 
