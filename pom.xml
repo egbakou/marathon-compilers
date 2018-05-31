@@ -6,7 +6,7 @@
 
     <groupId>com.github.egbakou</groupId>
     <artifactId>marathon-compilers</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>marathon-compilers</name>
@@ -149,7 +149,7 @@
                     <goals>deploy</goals>
                 </configuration>
             </plugin>
-            <!--<plugin>
+<!--            <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.6.7</version>
