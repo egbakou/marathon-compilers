@@ -18,7 +18,7 @@ To include it in your maven project then you have to specify the dependency.
 <dependency>
     <groupId>com.github.egbakou</groupId>
     <artifactId>marathon-compilers</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 </dependency>
 ```
 
